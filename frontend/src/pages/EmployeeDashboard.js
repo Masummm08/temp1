@@ -99,8 +99,8 @@ export default function EmployeeDashboard() {
             <button className="emp-btn emp-btn-secondary" onClick={handleLogout}>Logout</button>
           </div>
         </header>
-        <main className="emp-dashboard-main-content" >
-          <section className="emp-employee-details-cards" >
+        <main className="emp-dashboard-main-content" style={{ display: 'flex', gap: '2rem', justifyContent: 'center' }}>
+          <section className="emp-employee-details-cards" style={{ flex: 1 }}>
             <h3>Employee Details</h3>
             <div className="emp-employee-cards-container">
               <div className="emp-card emp-employee-card">
@@ -132,8 +132,6 @@ export default function EmployeeDashboard() {
                 <p>{new Date(employee.joiningDate).toLocaleDateString()}</p>
               </div>
             </div>
-          </section>
-          <section className="certificate-preview-section" style={{ flex: 1 }}>
             <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '1rem' }}>
               <button className="emp-btn emp-btn-secondary" onClick={generatePreview}>
                 Preview Certificate
@@ -142,7 +140,9 @@ export default function EmployeeDashboard() {
                 Download Internship Certificate
               </button>
             </div>
-            <div className='Priviewcard' >
+          </section>
+          <section className="certificate-preview-section" style={{ flex: 1 }}>
+            <div className='Priviewcard' style={{ maxWidth: '100%', marginLeft: '0' }}>
               {showPreview ? (
                 <div className="emp-certificate-preview" >
                   <h1 style={{ textAlign: 'center', fontWeight: 'bold', marginBottom: '20px', fontSize: '22px' }}>Internship Certificate</h1>
