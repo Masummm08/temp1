@@ -26,7 +26,7 @@ export default function Add({ onClose }) {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/employees', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

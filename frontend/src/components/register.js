@@ -26,7 +26,7 @@ export default function Register({ onClose, employee }) {
     };
 
     try {
-      const response = await fetch(employee ? `/api/employees/${employee._id}` : '/api/employees', {
+      const response = await fetch(employee ? `${process.env.REACT_APP_BACKEND_URL}/api/employees/${employee._id}` : `${process.env.REACT_APP_BACKEND_URL}/api/employees`, {
         method: employee ? 'PUT' : 'POST',
         headers: {
           'Content-Type': 'application/json'

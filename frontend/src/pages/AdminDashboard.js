@@ -28,9 +28,9 @@ export default function AdminDashboard() {
 
     try {
       // Use the employee deletion endpoint since we're working with employee data
-      console.log('Making DELETE request to:', `/api/employees/${user.dbId}`);
+      console.log('Making DELETE request to:', `${process.env.REACT_APP_BACKEND_URL}/api/employees/${user.dbId}`);
       
-      const response = await fetch(`/api/employees/${user.dbId}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees/${user.dbId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export default function AdminDashboard() {
     
     async function fetchEmployees() {
       try {
-        const response = await fetch('/api/employees');
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees`);
         const data = await response.json();
         console.log('Fetched employees data:', data);
         if (data.success) {
@@ -88,8 +88,8 @@ export default function AdminDashboard() {
       try {
         // Fetch both employees and users to get complete data
         const [employeeResponse, userResponse] = await Promise.all([
-          fetch('/api/employees'),
-          fetch('/api/users')
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees`),
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users`)
         ]);
         
         const employeeData = await employeeResponse.json();
@@ -183,7 +183,7 @@ export default function AdminDashboard() {
     if (user && user.dbId) {
       try {
         // Fetch the full employee data for editing
-        const response = await fetch(`/api/employees`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees`);
         const data = await response.json();
         if (data.success) {
           const fullEmployee = data.employees.find(emp => emp._id === user.dbId);

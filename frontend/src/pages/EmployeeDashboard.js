@@ -24,7 +24,7 @@ export default function EmployeeDashboard() {
 
     const fetchEmployees = async () => {
       try {
-        const response = await fetch('/api/employees');
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees`);
         if (!response.ok) {
           throw new Error('Failed to fetch employees');
         }
