@@ -1,9 +1,11 @@
 /* General resets and base styles */
-body, html, #root {
+body,
+html,
+#root {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f4f9;
   color: #333;
 }
@@ -19,7 +21,7 @@ body, html, #root {
 .emp-sidebar {
   width: 220px;
   background: #fff;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -31,7 +33,17 @@ body, html, #root {
   padding: 0 20px 20px;
   border-bottom: 1px solid #eee;
 }
-
+@media (max-width: 768px) {
+  .emp-dashboard-main-content {
+    flex-direction: column;
+  }
+  .emp-employee-details-cards {
+    margin-bottom: 20px;
+  }
+  .certificate-preview-section {
+    margin-top: 20px;
+  }
+}
 .emp-logo {
   font-size: 28px;
   margin-bottom: 10px;
@@ -83,7 +95,7 @@ body, html, #root {
 }
 
 .emp-btn-primary {
-  background: #4682B4; /* steel blue - darker */
+  background: #4682b4; /* steel blue - darker */
   color: #fff;
 }
 
@@ -92,7 +104,7 @@ body, html, #root {
 }
 
 .emp-btn-secondary {
-  background: #4682B4; /* steel blue - darker */
+  background: #4682b4; /* steel blue - darker */
   color: #fff;
 }
 
@@ -116,7 +128,7 @@ body, html, #root {
   align-items: center;
   padding: 15px 30px;
   background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -157,10 +169,33 @@ body, html, #root {
 
 /* Main content area */
 .emp-dashboard-main-content {
+  display: flex;
+  flex-direction: column;
   padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 25px;
+  gap: 40px;
+  /* display: grid; */
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* grid-gap: 25px; */
+}
+
+.emp-dashboard-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  height: 100%;
+  align-items: flex-start;
+}
+
+.emp-employee-details-cards {
+  flex: 1;
+  max-width: 50%;
+}
+
+.certificate-preview-section {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Cards */
@@ -293,6 +328,12 @@ body, html, #root {
   box-shadow: 0 4px 12px rgba(74, 20, 140, 0.1);
 }
 
+.emp-certificate-preview {
+  background-color: white;
+  border: 1px solid #d4d4d4;
+  padding: 40px 21px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .emp-dashboard-main-content {
@@ -375,20 +416,23 @@ body, html, #root {
 }
 
 .emp-employee-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  max-width: 100%;
 }
 
 .emp-employee-card {
   background-color: #e8eaf6;
   border-radius: 12px;
   padding: 15px 20px;
-  flex: 1 1 200px;
   box-shadow: 0 2px 8px rgba(74, 20, 140, 0.15);
   color: #1a237e;
   transition: background-color 0.3s ease;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .emp-employee-card h4 {
@@ -406,6 +450,32 @@ body, html, #root {
   background-color: #d1c4e9;
   cursor: default;
 }
+
+/* Responsive design for employee cards */
+@media (max-width: 1024px) {
+  .emp-dashboard-content-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .emp-employee-details-cards,
+  .certificate-preview-section {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .emp-employee-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .emp-employee-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .certificate-preview {
   border: 2px solid #000;
   padding: 20px;
@@ -416,7 +486,7 @@ body, html, #root {
   font-family: serif;
   box-sizing: border-box;
   /* overflow-y: auto; */
-  /* aspect-ratio: 1 / 1.414; */
+  aspect-ratio: 1 / 1.414;
 }
 
 .Priviewcard {
@@ -440,4 +510,18 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .emp-dashboard-main-content {
+    flex-direction: column !important;
+  }
+  .certificate-preview-section {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+  .Priviewcard {
+    width: 100% !important;
+    margin-top: 1rem;
+  }
 }
